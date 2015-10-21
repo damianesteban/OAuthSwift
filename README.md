@@ -2,6 +2,7 @@
   <img src="Assets/OAuthSwift-icon.png?raw=true" alt="OAuthSwift"/>
 </p>
 
+**This fork of OAuthSwift uses the new `SFSafariViewController` available in iOS 9**
 ## OAuthSwift
 
 Swift based OAuth library for iOS and OSX.
