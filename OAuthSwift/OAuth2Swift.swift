@@ -90,11 +90,15 @@ public class OAuth2Swift: NSObject {
             urlString += "&\(param.0)=\(param.1)"
         }
 
-        if let queryURL = NSURL(string: urlString) {
-           self.authorize_url_handler.handle(queryURL)
+        if let queryString = urlString.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()) {
+            print(queryString)
+            if let queryURL = NSURL(string: queryString) {
+                print("queryURL is valid")
+                self.authorize_url_handler.handle(queryURL)
+            }
         }
     }
-    
+
     func postOAuthAccessTokenWithRequestTokenByCode(code: String, callbackURL: NSURL, success: TokenSuccessHandler, failure: FailureHandler?) {
         var parameters = Dictionary<String, AnyObject>()
         parameters["client_id"] = self.consumer_key
